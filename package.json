@@ -4,15 +4,18 @@
   "description": "A Goal Setter app using MERN",
   "main": "server.js",
   "scripts": {
-    "start": "npm backend/server.js",
+    "start": "node backend/server.js",
     "server": "nodemon backend/server.js"
   },
   "author": "Nishant Sharma",
   "license": "MIT",
   "dependencies": {
+    "async": "^3.2.3",
     "colors": "^1.4.0",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "express-async-handler": "^1.2.0",
+    "mongoose": "^6.3.3"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
