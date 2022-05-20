@@ -1,9 +1,6 @@
-
 # Goals App
 
 A Goals App made using MERN Stack.
-
-
 
 ## Features
 
@@ -11,7 +8,6 @@ A Goals App made using MERN Stack.
 - Register New user
 - Create Goals (for each user)
 - Delete Goals (for each user)
-
 
 ### Install dependencies
 
@@ -22,13 +18,31 @@ npm install
 cd frontend
 npm install
 ```
-    
+
+### Usage
+
+To be executed from root folder
+
+```
+# Run server
+npm run server
+# Run Frontend
+npm run client
+
+# Run both frontend and backend
+npm run dev
+```
+
 ## Screenshots
+
 - Login Page
+
 ![Login Page](https://i.imgur.com/ftsBfUk.png)
+
 - Register Page
+
 ![Register Page](https://i.imgur.com/NykRIYc.png)
+
 - User Dashboard
+
 ![Dashboard](https://i.imgur.com/eBEtBj8.png)
-
-
