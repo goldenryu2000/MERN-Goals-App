@@ -1,12 +1,17 @@
-const asyncHandler = require("express-async-Handler");
-const { findByIdAndUpdate } = require("../models/goalModel");
-const Goal = require("../models/goalModel");
-const User = require("../models/userModel");
+import asyncHandler from "express-async-Handler";
+import { findByIdAndUpdate } from "../models/goalModel";
+import {
+  find,
+  create,
+  findById,
+  findByIdAndUpdate as _findByIdAndUpdate,
+} from "../models/goalModel";
+import User from "../models/userModel";
 //@desc GET all Goals
 //@route  GET /api/goals
 //@access Private
 const getGoals = asyncHandler(async (req, res) => {
-  const goals = await Goal.find({ user: req.user.id });
+  const goals = await find({ user: req.user.id });
 
   res.status(200).json(goals);
 });
@@ -20,7 +25,7 @@ const createGoal = asyncHandler(async (req, res) => {
     throw new Error("Please add a Goal");
   }
 
-  const goal = await Goal.create({
+  const goal = await create({
     text: req.body.text,
     user: req.user.id,
   });
@@ -31,7 +36,7 @@ const createGoal = asyncHandler(async (req, res) => {
 //@route  PUT /api/goals/:id
 //@access Private
 const updateGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id);
+  const goal = await findById(req.params.id);
   if (!goal) {
     res.status(400);
     throw new Error("Goal Not Found");
@@ -48,7 +53,7 @@ const updateGoal = asyncHandler(async (req, res) => {
     throw new Error("User not authorized");
   }
 
-  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
+  const updatedGoal = await _findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
 
@@ -59,7 +64,7 @@ const updateGoal = asyncHandler(async (req, res) => {
 //@route  DELETE /api/goals/:id
 //@access Private
 const deleteGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id);
+  const goal = await findById(req.params.id);
   if (!goal) {
     res.status(400);
     throw new Error("Goal Not Found");
@@ -78,7 +83,7 @@ const deleteGoal = asyncHandler(async (req, res) => {
   res.status(200).json({ id: req.params.id });
 });
 
-module.exports = {
+export default {
   getGoals,
   createGoal,
   updateGoal,
